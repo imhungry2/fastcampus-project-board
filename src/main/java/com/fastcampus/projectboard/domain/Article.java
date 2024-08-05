@@ -11,47 +11,58 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(indexes = {
-        @Index(columnList = "content"),
+        @Index(columnList = "title"),
+        @Index(columnList = "hashtag"),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
 @Getter
 @ToString
-public class ArticleComment {
+public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @ManyToOne(optional = false) private Article article;
-    @Setter @Column(nullable = false, length = 500) private String content;
+    @Setter @Column(nullable = false) private String title;
+    @Setter @Column(nullable = false) private String content;
+
+    @Setter private String hashtag;
 
     @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
     @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
     @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
     @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
-    protected ArticleComment() {}
+    @ToString.Exclude
+    @OrderBy("id")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-    private ArticleComment(Article article, String content) {
-        this.article = article;
+    protected Article() {}
+
+    private Article(String title, String content, String hashtag) {
+        this.title = title;
         this.content = content;
+        this.hashtag = hashtag;
     }
 
-    public static ArticleComment of(Article article, String content) {
-        return new ArticleComment(article, content);
+    public static Article of(String title, String content, String hashtag) {
+        return new Article(title, content, hashtag);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArticleComment that)) return false;
-        return id != null && id.equals(that.id);
+        if (!(o instanceof Article article)) return false;
+        return id != null && id.equals(article.id);
     }
 
     @Override
