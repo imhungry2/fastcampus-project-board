@@ -1,10 +1,11 @@
 package com.fastcampus.projectboard.controller;
 
-import org.junit.jupiter.api.Disabled;
+import com.fastcampus.projectboard.config.SecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(ArticleController.class)
 @DisplayName("View 컨트롤러 - 게시글")
+@Import(SecurityConfig.class)
 class ArticleControllerTest {
 
     private final MockMvc mvc;
@@ -23,7 +25,6 @@ class ArticleControllerTest {
 
     @Test
     @DisplayName("[VIEW}{GET} 게시글 리스트 {게시판} 페이지 - 정상 호출")
-    @Disabled("구현 중")
     void givenNoting_whenRequestingArticlesView_thenReturnArticlesView() throws Exception {
         // Given
 
@@ -37,7 +38,6 @@ class ArticleControllerTest {
 
     @Test
     @DisplayName("[VIEW}{GET} 게시글 상세 페이지 - 정상 호출")
-    @Disabled("구현 중")
     void givenNoting_whenRequestingArticleView_thenReturnArticleView() throws Exception {
         // Given
 
@@ -52,7 +52,6 @@ class ArticleControllerTest {
 
     @Test
     @DisplayName("[VIEW}{GET} 게시글 검색 페이지 - 정상 호출")
-    @Disabled("구현 중")
     void givenNoting_whenRequestingArticleSearchView_thenReturnArticleSearchView() throws Exception {
         // Given
 
@@ -65,7 +64,6 @@ class ArticleControllerTest {
 
     @Test
     @DisplayName("[VIEW}{GET} 게시글 해시태그 검색 페이지 - 정상 호출")
-    @Disabled("구현 중")
     void givenNoting_whenRequestingArticleHashtagSearchView_thenReturnArticleHashtagSearchView() throws Exception {
         // Given
 
