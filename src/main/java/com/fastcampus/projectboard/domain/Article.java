@@ -24,17 +24,24 @@ public class Article extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @Column(nullable = false) private String title;
-    @Setter @Column(nullable = false) private String content;
+    @Setter
+    @Column(nullable = false)
+    private String title; // 제목
 
-    @Setter private String hashtag;
+    @Setter
+    @Column(nullable = false, length = 10000)
+    private String content; // 본문
+
+    @Setter
+    private String hashtag; // 해시태그
 
     @ToString.Exclude
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-    protected Article() {}
+    protected Article() {
+    }
 
     private Article(String title, String content, String hashtag) {
         this.title = title;
@@ -55,6 +62,6 @@ public class Article extends AuditingFields {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id);
     }
 }
