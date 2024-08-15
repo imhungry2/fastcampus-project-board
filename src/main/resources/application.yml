@@ -13,6 +13,7 @@ spring:
     password: 0098
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
+    open-in-view: false
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
     show-sql: true
