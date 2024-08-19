@@ -11,8 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MainController.class)
 @Import(SecurityConfig.class)
@@ -31,7 +30,7 @@ class MainControllerTest {
         // When & Then
         mvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("forward:/articles"))
+                .andExpect(view().name("forward:/articles"))
                 .andExpect(forwardedUrl("/articles"))
                 .andDo(MockMvcResultHandlers.print());
     }
