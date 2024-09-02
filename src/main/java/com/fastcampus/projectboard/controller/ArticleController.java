@@ -1,7 +1,6 @@
 package com.fastcampus.projectboard.controller;
 
 import com.fastcampus.projectboard.domain.constant.FormStatus;
-import com.fastcampus.projectboard.domain.dto.UserAccountDto;
 import com.fastcampus.projectboard.domain.dto.request.ArticleRequest;
 import com.fastcampus.projectboard.domain.dto.response.ArticleResponse;
 import com.fastcampus.projectboard.domain.dto.response.ArticleWithCommentsResponse;
@@ -28,7 +27,6 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService articleService;
-
     private final PaginationService paginationService;
 
     @GetMapping
@@ -80,7 +78,6 @@ public class ArticleController {
     @GetMapping("/form")
     public String articleForm(ModelMap map) {
         map.addAttribute("formStatus", FormStatus.CREATE);
-
         return "articles/form";
     }
 
@@ -90,7 +87,6 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
-
         return "redirect:/articles";
     }
 
@@ -111,7 +107,6 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
-
         return "redirect:/articles/" + articleId;
     }
 
@@ -121,7 +116,6 @@ public class ArticleController {
             @AuthenticationPrincipal BoardPrincipal boardPrincipal
     ) {
         articleService.deleteArticle(articleId, boardPrincipal.getUsername());
-
         return "redirect:/articles";
     }
 }

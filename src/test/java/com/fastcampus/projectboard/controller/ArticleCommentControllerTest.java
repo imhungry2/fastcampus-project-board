@@ -33,13 +33,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ArticleCommentControllerTest {
 
     private final MockMvc mvc;
-
     private final FormDataEncoder formDataEncoder;
 
-    @MockBean
-    private ArticleCommentService articleCommentService;
+    @MockBean private ArticleCommentService articleCommentService;
 
-    public ArticleCommentControllerTest(
+    ArticleCommentControllerTest(
             @Autowired MockMvc mvc,
             @Autowired FormDataEncoder formDataEncoder) {
         this.mvc = mvc;

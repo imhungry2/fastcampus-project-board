@@ -26,7 +26,7 @@ class JpaRepositoryTest {
     private final ArticleCommentRepository articleCommentRepository;
     private final UserAccountRepository userAccountRepository;
 
-    public JpaRepositoryTest(
+    JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository,
             @Autowired UserAccountRepository userAccountRepository
@@ -99,9 +99,9 @@ class JpaRepositoryTest {
 
     @TestConfiguration
     @EnableJpaAuditing
-    public static class TestJpaConfig {
+    static class TestJpaConfig {
         @Bean
-        public AuditorAware<String> auditorProvider() {
+        AuditorAware<String> auditorProvider() {
             return () -> Optional.of("uno");
         }
     }

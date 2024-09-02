@@ -13,15 +13,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = Void.class)
-@Import({FormDataEncoder.class, ObjectMapper.class})
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.NONE,
+        classes = {FormDataEncoder.class, ObjectMapper.class}
+)
 @DisplayName("테스트 도구 - Form 데이터 인코더")
-@Disabled
 class FormDataEncoderTest {
 
     private final FormDataEncoder formDataEncoder;
 
-    public FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
+    FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
         this.formDataEncoder = formDataEncoder;
     }
 
