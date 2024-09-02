@@ -14,16 +14,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Disabled("Spring Data REST 통합 테스트는 불필요하여 제외 시킨다.")
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
 @DisplayName("Data Rest - API Test")
+@Disabled("Spring Data REST 통합 테스트는 불필요하여 제외 시킨다.")
 public class DataRestTest {
 
     private final MockMvc mvc;
 
-    public DataRestTest(@Autowired MockMvc mvc) {
+    DataRestTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
