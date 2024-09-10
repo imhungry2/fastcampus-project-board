@@ -1,9 +1,8 @@
 package com.fastcampus.projectboard.controller;
 
-import com.fastcampus.projectboard.config.SecurityConfig;
 import com.fastcampus.projectboard.config.TestSecurityConfig;
-import com.fastcampus.projectboard.domain.dto.ArticleCommentDto;
-import com.fastcampus.projectboard.domain.dto.request.ArticleCommentRequest;
+import com.fastcampus.projectboard.dto.ArticleCommentDto;
+import com.fastcampus.projectboard.dto.request.ArticleCommentRequest;
 import com.fastcampus.projectboard.service.ArticleCommentService;
 import com.fastcampus.projectboard.util.FormDataEncoder;
 import org.junit.jupiter.api.DisplayName;

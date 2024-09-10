@@ -1,4 +1,4 @@
-package com.fastcampus.projectboard.domain.dto;
+package com.fastcampus.projectboard.dto;
 
 import com.fastcampus.projectboard.domain.Hashtag;
 

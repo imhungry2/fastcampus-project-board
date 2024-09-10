@@ -1,6 +1,6 @@
-package com.fastcampus.projectboard.domain.dto.security;
+package com.fastcampus.projectboard.dto.security;
 
-import com.fastcampus.projectboard.domain.dto.UserAccountDto;
+import com.fastcampus.projectboard.dto.UserAccountDto;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,6 +29,7 @@ public record BoardPrincipal(
     @Override public boolean isEnabled() { return true; }
 
     public static BoardPrincipal of(String username, String password, String email, String nickname, String memo) {
+        // 지금은 인증만 하고 권한을 다루고 있지 않아서 임의로 세팅한다.
         Set<RoleType> roleTypes = Set.of(RoleType.USER);
 
         return new BoardPrincipal(
