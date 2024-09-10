@@ -8,10 +8,9 @@ level:
 
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/board
+    url: jdbc:mysql://localhost:3306/board
     username: psj
     password: 0098
-    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     open-in-view: false
     defer-datasource-initialization: true
