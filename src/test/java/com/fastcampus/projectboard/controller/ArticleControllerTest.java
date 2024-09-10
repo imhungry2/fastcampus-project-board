@@ -2,17 +2,16 @@ package com.fastcampus.projectboard.controller;
 
 import com.fastcampus.projectboard.config.TestSecurityConfig;
 import com.fastcampus.projectboard.domain.constant.FormStatus;
-import com.fastcampus.projectboard.domain.dto.ArticleDto;
-import com.fastcampus.projectboard.domain.dto.ArticleWithCommentsDto;
-import com.fastcampus.projectboard.domain.dto.HashtagDto;
-import com.fastcampus.projectboard.domain.dto.UserAccountDto;
+import com.fastcampus.projectboard.dto.ArticleDto;
+import com.fastcampus.projectboard.dto.ArticleWithCommentsDto;
+import com.fastcampus.projectboard.dto.HashtagDto;
+import com.fastcampus.projectboard.dto.UserAccountDto;
 import com.fastcampus.projectboard.domain.constant.SearchType;
-import com.fastcampus.projectboard.domain.dto.request.ArticleRequest;
-import com.fastcampus.projectboard.domain.dto.response.ArticleResponse;
+import com.fastcampus.projectboard.dto.request.ArticleRequest;
+import com.fastcampus.projectboard.dto.response.ArticleResponse;
 import com.fastcampus.projectboard.service.ArticleService;
 import com.fastcampus.projectboard.service.PaginationService;
 import com.fastcampus.projectboard.util.FormDataEncoder;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,19 +157,6 @@ class ArticleControllerTest {
                 .andExpect(model().attribute("searchTypeHashtag", SearchType.HASHTAG));
         then(articleService).should().getArticleWithComments(articleId);
         then(articleService).should().getArticleCount();
-    }
-
-    @Test
-    @DisplayName("[view][GET] 게시글 검색 전용 페이지 - 정상 호출")
-    @Disabled("구현 중")
-    void givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView() throws Exception {
-        // Given
-
-        // When & Then
-        mvc.perform(get("/articles/search"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("articles/search"));
     }
 
     @Test

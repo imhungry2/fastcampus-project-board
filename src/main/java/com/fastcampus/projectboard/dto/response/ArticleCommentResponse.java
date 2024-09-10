@@ -1,8 +1,7 @@
-package com.fastcampus.projectboard.domain.dto.response;
+package com.fastcampus.projectboard.dto.response;
 
-import com.fastcampus.projectboard.domain.dto.ArticleCommentDto;
+import com.fastcampus.projectboard.dto.ArticleCommentDto;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public record ArticleCommentResponse(

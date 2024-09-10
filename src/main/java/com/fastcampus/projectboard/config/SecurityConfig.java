@@ -1,7 +1,7 @@
 package com.fastcampus.projectboard.config;
 
-import com.fastcampus.projectboard.domain.dto.UserAccountDto;
-import com.fastcampus.projectboard.domain.dto.security.BoardPrincipal;
+import com.fastcampus.projectboard.dto.UserAccountDto;
+import com.fastcampus.projectboard.dto.security.BoardPrincipal;
 import com.fastcampus.projectboard.repository.UserAccountRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

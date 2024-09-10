@@ -1,8 +1,8 @@
-package com.fastcampus.projectboard.domain.dto.request;
+package com.fastcampus.projectboard.dto.request;
 
-import com.fastcampus.projectboard.domain.dto.ArticleDto;
-import com.fastcampus.projectboard.domain.dto.HashtagDto;
-import com.fastcampus.projectboard.domain.dto.UserAccountDto;
+import com.fastcampus.projectboard.dto.ArticleDto;
+import com.fastcampus.projectboard.dto.HashtagDto;
+import com.fastcampus.projectboard.dto.UserAccountDto;
 
 import java.util.Set;
 
