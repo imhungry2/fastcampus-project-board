@@ -34,6 +34,7 @@ public record ArticleCommentResponse(
         if (nickname == null || nickname.isBlank()) {
             nickname = dto.userAccountDto().userId();
         }
+
         return ArticleCommentResponse.of(
                 dto.id(),
                 dto.content(),

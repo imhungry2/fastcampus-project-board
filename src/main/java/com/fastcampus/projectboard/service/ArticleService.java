@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
 public class ArticleService {
 
     private final HashtagService hashtagService;
-
     private final ArticleRepository articleRepository;
     private final UserAccountRepository userAccountRepository;
     private final HashtagRepository hashtagRepository;

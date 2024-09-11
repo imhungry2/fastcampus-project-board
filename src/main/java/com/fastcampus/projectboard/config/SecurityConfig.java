@@ -26,16 +26,19 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/",
                                 "articles",
-                                "articles/search-hashtag")
+                                "articles/search-hashtag"
+                        )
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(withDefaults())
                 .formLogin(login -> login.defaultSuccessUrl("/articles"))
                 .logout(logout -> logout.logoutSuccessUrl("/"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .build();
     }
 

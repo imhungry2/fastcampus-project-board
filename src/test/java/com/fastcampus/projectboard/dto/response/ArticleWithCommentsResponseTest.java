@@ -46,7 +46,8 @@ class ArticleWithCommentsResponseTest {
                         createArticleCommentResponse(7L, null, now.plusDays(2L)),
                         createArticleCommentResponse(2L, null, now.plusDays(1L)),
                         createArticleCommentResponse(1L, null, now),
-                        createArticleCommentResponse(4L, null, now));
+                        createArticleCommentResponse(4L, null, now)
+                );
     }
 
     @Test
@@ -74,14 +75,16 @@ class ArticleWithCommentsResponseTest {
                 .containsExactly(
                         createArticleCommentResponse(5L, null, now.plusDays(5)),
                         createArticleCommentResponse(6L, null, now.plusDays(4)),
-                        createArticleCommentResponse(1L, null, now))
+                        createArticleCommentResponse(1L, null, now)
+                )
                 .flatExtracting(ArticleCommentResponse::childComments)
                 .containsExactly(
                         createArticleCommentResponse(7L, 6L, now.plusDays(2L)),
                         createArticleCommentResponse(8L, 6L, now.plusDays(7L)),
                         createArticleCommentResponse(4L, 1L, now),
                         createArticleCommentResponse(2L, 1L, now.plusDays(1L)),
-                        createArticleCommentResponse(3L, 1L, now.plusDays(3L)));
+                        createArticleCommentResponse(3L, 1L, now.plusDays(3L))
+                );
     }
 
     @Test

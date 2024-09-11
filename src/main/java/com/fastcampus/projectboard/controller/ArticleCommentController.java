@@ -23,6 +23,7 @@ public class ArticleCommentController {
             ArticleCommentRequest articleCommentRequest
     ) {
         articleCommentService.saveArticleComment(articleCommentRequest.toDto(boardPrincipal.toDto()));
+
         return "redirect:/articles/" + articleCommentRequest.articleId();
     }
 
@@ -33,6 +34,7 @@ public class ArticleCommentController {
             Long articleId
     ) {
         articleCommentService.deleteArticleComment(commentId, boardPrincipal.getUsername());
+
         return "redirect:/articles/" + articleId;
     }
 }
