@@ -64,6 +64,8 @@ public record ArticleWithCommentsResponse(
                         new TreeSet<>(Comparator
                                 .comparing(ArticleCommentResponse::createdAt)
                                 .reversed()
-                                .thenComparingLong(ArticleCommentResponse::id))));
+                                .thenComparingLong(ArticleCommentResponse::id)
+                        )
+                ));
     }
 }

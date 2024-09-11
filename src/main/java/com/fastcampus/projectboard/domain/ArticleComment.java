@@ -29,9 +29,12 @@ public class ArticleComment extends AuditingFields {
 
     @Setter
     @JoinColumn(name = "userId")
-    @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
+    @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
 
-    @Setter @Column(updatable = false) private Long parentCommentId; // 부모 댓글 ID
+    @Setter
+    @Column(updatable = false)
+    private Long parentCommentId; // 부모 댓글 ID
 
     @OneToMany(mappedBy = "parentCommentId", cascade = CascadeType.ALL)
     @OrderBy("createdAt ASC")
@@ -39,7 +42,8 @@ public class ArticleComment extends AuditingFields {
     private Set<ArticleComment> childComments = new LinkedHashSet<>();
 
     @Setter @Column(nullable = false, length = 500) private String content; // 본문
-  
+
+
     protected ArticleComment() {}
 
     private ArticleComment(Article article, UserAccount userAccount, Long parentCommentId, String content) {

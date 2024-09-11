@@ -47,7 +47,7 @@ public class ArticleController {
         return "articles/index";
     }
 
-    @GetMapping("{articleId}")
+    @GetMapping("/{articleId}")
     public String article(@PathVariable Long articleId, ModelMap map) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticleWithComments(articleId));
 
@@ -59,7 +59,7 @@ public class ArticleController {
         return "articles/detail";
     }
 
-    @GetMapping("search-hashtag")
+    @GetMapping("/search-hashtag")
     public String searchArticleHashtag(
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
@@ -80,6 +80,7 @@ public class ArticleController {
     @GetMapping("/form")
     public String articleForm(ModelMap map) {
         map.addAttribute("formStatus", FormStatus.CREATE);
+
         return "articles/form";
     }
 
@@ -89,6 +90,7 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
+
         return "redirect:/articles";
     }
 
@@ -109,6 +111,7 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
+
         return "redirect:/articles/" + articleId;
     }
 
@@ -118,6 +121,7 @@ public class ArticleController {
             @AuthenticationPrincipal BoardPrincipal boardPrincipal
     ) {
         articleService.deleteArticle(articleId, boardPrincipal.getUsername());
+
         return "redirect:/articles";
     }
 }
